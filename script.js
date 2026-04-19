@@ -32,6 +32,14 @@ class ToDo {
             (task.description && task.description.toLowerCase().includes(query.toLowerCase()))
         );
     }
+
+    sortTasksByDate() {
+        this.toDoList.sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+
+    sortTasksByTitle() {
+        this.toDoList.sort((a, b) => a.text.localeCompare(b.text));
+    }
 }
 
 
@@ -261,5 +269,28 @@ function makeEditable(element, type, initialValue, onSave) {
         }
     });
 }
+
+function sortTasksByDate() {
+    toDo.sortTasksByDate();
+    renderTasks(searchBar.value);
+}
+
+function sortTasksByTitle() {
+    toDo.sortTasksByTitle();
+    renderTasks(searchBar.value);
+}
+
+const sortDateButton = document.getElementById("sortDateButton");
+const sortTitleButton = document.getElementById("sortTitleButton");
+
+sortDateButton.addEventListener("click", () => {
+    sortTasksByDate();
+    renderTasks(searchBar.value);
+});
+
+sortTitleButton.addEventListener("click", () => {
+    sortTasksByTitle();
+    renderTasks(searchBar.value);
+});
 
 renderTasks();
