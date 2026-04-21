@@ -199,7 +199,7 @@ header {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.8);
 }
 
-.task-completed-rl, .task-completed-rr .task-info {
+.task-completed-rl .task-info, .task-completed-rr .task-info {
     text-decoration: line-through;
 }
 
