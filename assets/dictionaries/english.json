@@ -1,0 +1,21 @@
+{
+    "title": "Cursed To-Do List",
+    "searchPlaceholder": "Search for a task...",
+    "sortByDate": "Sort by date",
+    "sortByTitle": "Sort by title",
+    "taskPlaceholder": "Add a new task...",
+    "descriptionPlaceholder": "Task description...",
+    "addTask": "Add",
+    "deleteTask": "Delete",
+    "completionDate": "Completion date",
+    "missingTaskName": "No task name was entered.",
+    "missingTaskDate": "No task completion date was entered.",
+    "copyright": "All rights reserved.",
+    "projectAuthor": "Designed and built by",
+    "hauntedHouse": "Haunted house",
+    "foundInHouse": "Found inside",
+    "leftTrace": "It left a trace...",
+    "languageSwitcher": "Choose language",
+    "languagePolish": "Polish",
+    "languageEnglish": "English"
+}

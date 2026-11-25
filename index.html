@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +11,21 @@
     <body>
         <header>
             <h1>Cursed To-Do List</h1>
+            <div class="language-switcher" aria-label="Choose language" data-i18n-aria-label="languageSwitcher">
+                <button class="language-button" id="polishLanguageButton" type="button" aria-label="Polish" aria-pressed="false" data-language="polish" data-i18n-aria-label="languagePolish">
+                    <img src="assets/flags/poland.jpg" alt="Polish flag">
+                </button>
+                <button class="language-button" id="englishLanguageButton" type="button" aria-label="English" aria-pressed="true" data-language="english" data-i18n-aria-label="languageEnglish">
+                    <img src="assets/flags/uk.jpg" alt="UK flag">
+                </button>
+            </div>
         </header>
 
         <div class="gradient-top">
             <div class = "actions-container">
-                <input type="text" id="searchBar" placeholder="Wyszukaj zadanie...">
-                <button id="sortDateButton">Sortuj po dacie</button>
-                <button id="sortTitleButton">Sortuj po tytule</button>
+                <input type="text" id="searchBar" placeholder="Search for a task..." data-i18n-placeholder="searchPlaceholder">
+                <button id="sortDateButton" data-i18n="sortByDate">Sort by date</button>
+                <button id="sortTitleButton" data-i18n="sortByTitle">Sort by title</button>
             </div>
         </div>
 
@@ -26,17 +34,17 @@
             <ul id="taskList"></ul>
             
             <section class="row">
-                <input type="text" id="taskInput" placeholder="Dodaj nowe zadanie...">
+                <input type="text" id="taskInput" placeholder="Add a new task..." data-i18n-placeholder="taskPlaceholder">
                 <input type="date" id="dateInput">
             </section>
-            <input type="text" id="descriptionInput" placeholder="Opis zadania...">
-            <button id="addButton">Dodaj</button>
+            <input type="text" id="descriptionInput" placeholder="Task description..." data-i18n-placeholder="descriptionPlaceholder">
+            <button id="addButton" data-i18n="addTask">Add</button>
         </section>
         
         <div class="center">
             <footer>
-                <p>&copy; 2026 Cursed To-Do List. Wszelkie prawa zastrzeżone.</p>
-                <p>Projekt i wykonanie: Maciek104</p>
+                <p>&copy; 2026 Cursed To-Do List. <span data-i18n="copyright">All rights reserved.</span></p>
+                <p><span data-i18n="projectAuthor">Designed and built by</span>: Maciek104</p>
             </footer>
         </div>
 >
@@ -44,19 +52,19 @@
             <div class="left-align">
                 <div class="polaroid-lr">
                     <img src="assets/images/image_000.jpg" alt="image">
-                    <p>Nawiedzony dom</p>
+                    <p data-i18n="hauntedHouse">Haunted house</p>
                 </div>
             </div>
             <div class="right-align">
                 <div class="polaroid-rr">
                     <img src="assets/images/image_001.jpg" alt="image">
-                    <p>Znaleźliśmy to w domu</p>
+                    <p data-i18n="foundInHouse">We found this in the house</p>
                 </div>
             </div>
             <div class="left-align">
                 <div class="polaroid-lr">
                     <img src="assets/images/image_002.jpg" alt="image">
-                    <p>To zostawiło ślad...</p>
+                    <p data-i18n="leftTrace">It left a trace...</p>
                 </div>
             </div>
         </section>

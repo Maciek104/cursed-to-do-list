@@ -53,6 +53,7 @@ const descriptionInput = document.getElementById('descriptionInput');
 const addButton = document.getElementById('addButton');
 const taskList = document.getElementById('taskList');
 const searchBar = document.getElementById("searchBar");
+let translations;
 
 function highlight(text, query) {
     if (!query) return text;
@@ -78,12 +79,12 @@ function renderTasks(query = "") {
                 <div class="task-completed${taskClass}">
                     <div class="task-info">
                         <h3 class="task-text">${highlight(task.text, query)}</h3>
-                        <p class="task-p">Data wykonania: ${task.date}</p>
+                        <p class="task-p">${translations.completionDate}: ${task.date}</p>
                         <p class="task-description">${task.description}</p>
                     </div>
                     <div class="task-actions">
                         <input type="checkbox" checked>
-                        <button>Usuń</button>
+                        <button>${translations.deleteTask}</button>
                     </div>
                 </div>
             `;
@@ -142,12 +143,12 @@ function renderTasks(query = "") {
                 <div class="task${taskClass}">
                     <div class="task-info">
                         <h3 class="task-text">${highlight(task.text, query)}</h3>
-                        <p class="task-p">Data wykonania: ${task.date}</p>
+                        <p class="task-p">${translations.completionDate}: ${task.date}</p>
                         <p class="task-description">${task.description}</p>
                     </div>
                     <div class="task-actions">
                         <input type="checkbox">
-                        <button>Usuń</button>
+                        <button>${translations.deleteTask}</button>
                     </div>
                 </div>
             `;
@@ -211,12 +212,12 @@ addButton.addEventListener("click", () => {
     const description = descriptionInput.value;
 
     if (text == "") {
-        alert("Nie wprowadzono nazwy zadania.");
+        alert(translations.missingTaskName);
         return;
     }
 
     if (date == "") {
-        alert("Nie wprowadzono daty wykonania zadania.");
+        alert(translations.missingTaskDate);
         return;
     }
 
@@ -283,6 +284,45 @@ function sortTasksByTitle() {
 const sortDateButton = document.getElementById("sortDateButton");
 const sortTitleButton = document.getElementById("sortTitleButton");
 
+async function setLanguage(language) {
+    const response = await fetch(`assets/dictionaries/${language}.json`);
+    if (!response.ok) {
+        throw new Error(`Failed to load ${language} dictionary: ${response.status}`);
+    }
+
+    translations = await response.json();
+    document.documentElement.lang = language === "polish" ? "pl" : "en";
+
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+        element.textContent = translations[element.dataset.i18n];
+    });
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+        element.placeholder = translations[element.dataset.i18nPlaceholder];
+    });
+
+    document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+        element.setAttribute("aria-label", translations[element.dataset.i18nAriaLabel]);
+    });
+
+    document.querySelectorAll("[data-language]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.language === language));
+    });
+
+    renderTasks(searchBar.value);
+}
+
+function handleLanguageError(error) {
+    console.error("Unable to change the application language.", error);
+    alert("Unable to load the selected language.");
+}
+
+document.querySelectorAll("[data-language]").forEach((button) => {
+    button.addEventListener("click", () => {
+        setLanguage(button.dataset.language).catch(handleLanguageError);
+    });
+});
+
 sortDateButton.addEventListener("click", () => {
     sortTasksByDate();
     renderTasks(searchBar.value);
@@ -293,4 +333,4 @@ sortTitleButton.addEventListener("click", () => {
     renderTasks(searchBar.value);
 });
 
-renderTasks();
+setLanguage("english").catch(handleLanguageError);

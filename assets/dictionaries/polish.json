@@ -1,0 +1,21 @@
+{
+    "title": "Cursed To-Do List",
+    "searchPlaceholder": "Wyszukaj zadanie...",
+    "sortByDate": "Sortuj po dacie",
+    "sortByTitle": "Sortuj po tytule",
+    "taskPlaceholder": "Dodaj nowe zadanie...",
+    "descriptionPlaceholder": "Opis zadania...",
+    "addTask": "Dodaj",
+    "deleteTask": "Usuń",
+    "completionDate": "Data wykonania",
+    "missingTaskName": "Nie wprowadzono nazwy zadania.",
+    "missingTaskDate": "Nie wprowadzono daty wykonania zadania.",
+    "copyright": "Wszelkie prawa zastrzeżone.",
+    "projectAuthor": "Projekt i wykonanie",
+    "hauntedHouse": "Nawiedzony dom",
+    "foundInHouse": "Znaleźliśmy to w domu",
+    "leftTrace": "To zostawiło ślad...",
+    "languageSwitcher": "Wybierz język",
+    "languagePolish": "Polski",
+    "languageEnglish": "Angielski"
+}
